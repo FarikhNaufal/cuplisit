@@ -5,7 +5,7 @@
         <h1 class="text-3xl lg:text-5xl font-bold text-secondry text-center mb-14">CUPLIS<span class="text-primary">.IT</span>
         </h1>
         <div class="bg-green-300 w-full text-green-900 border-green-400 border-2 p-2 my-3 rounded-md">
-            <p>Succesfully Logout</p>
+            <p>Succesfully Logout!!</p>
         </div>
         <div class="lg:w-[40rem] w-[20rem] h-[20rem] lg:h-[20rem] bg-secondry rounded-xl p-8">
             <form action="" method="POST" class="flex flex-col" enctype="multipart/form-data">
