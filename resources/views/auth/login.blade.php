@@ -7,7 +7,7 @@
         <div class="bg-green-300 w-full text-green-900 border-green-400 border-2 p-2 my-3 rounded-md">
             <p>Succesfully Logout</p>
         </div>
-        <div class="lg:w-[40rem] w-[20rem] h-[20rem] lg:h-[25rem] bg-secondry rounded-xl p-8">
+        <div class="lg:w-[40rem] w-[20rem] h-[20rem] lg:h-[20rem] bg-secondry rounded-xl p-8">
             <form action="" method="POST" class="flex flex-col" enctype="multipart/form-data">
                 @csrf
                 <p class="text-white">Login Form</p>
@@ -29,7 +29,7 @@
                         id="password"
                         placeholder="Password" name="password">
                 </div>
-                <div class="flex gap-1 mt-2 mb-5">
+                <div class="flex gap-1 mt-2 mb-6">
                     <input type="checkbox" name="" id="">
                     <span class="text-white text-xs">Remember me</span>
                     <a href="forgotPass" class="text-white text-xs ms-auto hover:underline hover:underline-offset-2">Forgot password</a>
