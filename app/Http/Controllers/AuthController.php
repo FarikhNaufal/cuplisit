@@ -11,15 +11,15 @@ class AuthController extends Controller
     //
     public function login(Request $request){
         $request->validate([
-            'EmailOrPassword' => ['required'],
+            'EmailOrUsername' => ['required'],
             'password' => ['required', 'min:8']
         ]);
 
-        $login_type = filter_var($request->input('EmailOrPassword'), FILTER_VALIDATE_EMAIL )
+        $login_type = filter_var($request->input('EmailOrUsername'), FILTER_VALIDATE_EMAIL )
         ? 'email'
         : 'username';
         $request->merge([
-            $login_type => $request->input('EmailOrPassword')
+            $login_type => $request->input('EmailOrUsername')
         ]);
 
         if (Auth::attempt($request->only([$login_type, 'password']))) {
@@ -27,6 +27,11 @@ class AuthController extends Controller
         }
 
         dd('Credentials not match');
+    }
 
+    public function register(Request $request){
+        $request->validate([
+
+        ]);
     }
 }

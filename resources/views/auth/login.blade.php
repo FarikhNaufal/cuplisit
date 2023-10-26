@@ -13,8 +13,8 @@
                 <p class="text-white">Login Form</p>
                 <input type="text"
                     class="mt-3 mb-2 placeholder:text-opacity-60 placeholder:text-primary rounded-md w-full px-2 py-1"
-                    placeholder="Email or password" name="EmailOrPassword" >
-                    @error('EmailOrPassword')
+                    placeholder="Email or Username" name="EmailOrUsername" >
+                    @error('EmailOrUsername')
                         <label class="text-red-600">{{$message}}</label>
                     @enderror
                 <div class="relative my-3">
