@@ -6,16 +6,11 @@
         </h1>
 
         <div class="lg:w-[40rem] w-[20rem] bg-secondry rounded-xl p-8">
-            <form action="/register" method="POST" class="flex flex-col" enctype="multipart/form-data">
+            <form action="/reset-password" method="POST" enctype="multipart/form-data" class="flex flex-col">
                 @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
 
-                <p class="text-white">Register Form</p>
-                <input type="text"
-                    class="mt-3 mb-2 placeholder:text-opacity-60 placeholder:text-primary rounded-md w-full px-2 py-1"
-                    placeholder="Username" name="username">
-                @error('username')
-                    <label class="text-red-600">{{ $message }}</label>
-                @enderror
+                <p class="text-white">Reset your Password</p>
                 <input type="email"
                     class="mt-3 mb-2 placeholder:text-opacity-60 placeholder:text-primary rounded-md w-full px-2 py-1"
                     placeholder="Email" name="email">
@@ -31,12 +26,11 @@
                     </div>
                     <input type="password"
                         class="js-password placeholder:text-opacity-60 placeholder:text-primary rounded-md w-full px-2 py-1"
-                        id="password" placeholder="Password" name="password">
+                        id="password" placeholder="New Password" name="password">
                 </div>
                 @error('password')
                     <label class="text-red-600">{{ $message }}</label>
                 @enderror
-
                 <div class="relative my-3">
                     <div class="absolute inset-y-0 right-0 flex items-center px-2">
                         <input class="hidden cjs-password-toggle" id="ctoggle" type="checkbox" />
@@ -52,31 +46,7 @@
                     <label class="text-red-600">{{ $message }}</label>
                 @enderror
 
-                <div class="flex items-center justify-between">
-                    <div class="flex flex-col gap-y-2">
-                        <input type="date" class="mt-3 mb-2 text-primary rounded-md px-2 py-1" placeholder="Email"
-                            name="dob">
-                        @error('dob')
-                            <label class="text-red-600">{{ $message }}</label>
-                        @enderror
-                    </div>
-                    <div class="flex flex-col">
-                        <select name="gender" class="text-primary px-2 py-1 rounded-md">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                        @error('gender')
-                            <label class="text-red-600">{{ $message }}</label>
-                        @enderror
-                    </div>
-                </div>
-                <div class="flex gap-1 mt-2 mb-7">
-                    <input type="checkbox" name="" id="">
-                    <span class="text-white text-xs">Remember me</span>
-                </div>
-                <button class="w-full py-4 text-white rounded-md bg-primary mb-2 hover:bg-opacity-60">LOGIN</button>
-                <a href="login" class="mx-auto text-white text-sm hover:underline hover:underline-offset-2">I already have
-                    an account</a>
+                <button class="w-full py-4 text-white rounded-md bg-primary mb-2 hover:bg-opacity-60">RESET</button>
             </form>
         </div>
     </div>
