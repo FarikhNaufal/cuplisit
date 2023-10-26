@@ -4,7 +4,7 @@
     <div class="">
         <h1 class="text-3xl lg:text-5xl font-bold text-secondry text-center mb-14">CUPLIS<span class="text-primary">.IT</span>
         </h1>
-        <div class="lg:w-[40rem] w-[20rem] h-[27rem] lg:h-[25rem] bg-secondry rounded-xl p-8">
+        <div class="lg:w-[40rem] w-[20rem] h-[27rem] lg:h-[27rem] bg-secondry rounded-xl p-8">
             <form action="" class="flex flex-col">
                 <p class="text-white">Register Form</p>
                 <input type="text"
@@ -33,7 +33,7 @@
                         <option value="female">Female</option>
                     </select>
                 </div>
-                <div class="flex gap-1 mt-2 mb-5">
+                <div class="flex gap-1 mt-2 mb-7">
                     <input type="checkbox" name="" id="">
                     <span class="text-white text-xs">Remember me</span>
                 </div>
