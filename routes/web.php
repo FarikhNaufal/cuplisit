@@ -22,6 +22,12 @@ Route::get('/register', function () {
 });
 Route::get('/forgotPass', function () {
     return view('auth.forgot');
-});
+})->name('password.request');
 
-Route::post('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('register', [AuthController::class, 'register']);
+Route::post('forgot-password', [AuthController::class, 'forgot_password'])->name('password.email');
+Route::post('reset-password', [AuthController::class, 'reset_password'])->name('password.update');
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('auth.reset', ['token' => $token]);
+})->name('password.reset');
