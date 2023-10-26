@@ -4,9 +4,11 @@
     <div class="">
         <h1 class="text-3xl lg:text-5xl font-bold text-secondry text-center mb-14">CUPLIS<span class="text-primary">.IT</span>
         </h1>
+
         <div class="lg:w-[40rem] w-[20rem] bg-secondry rounded-xl p-8">
             <form action="/register" method="POST" class="flex flex-col" enctype="multipart/form-data">
                 @csrf
+
                 <p class="text-white">Register Form</p>
                 <input type="text"
                     class="mt-3 mb-2 placeholder:text-opacity-60 placeholder:text-primary rounded-md w-full px-2 py-1"
@@ -68,7 +70,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="flex gap-1 mt-2 mb-5">
+                <div class="flex gap-1 mt-2 mb-7">
                     <input type="checkbox" name="" id="">
                     <span class="text-white text-xs">Remember me</span>
                 </div>

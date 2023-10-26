@@ -10,6 +10,7 @@
             </div>
         @endif
         <div class="lg:w-[40rem] w-[20rem] h-[20rem] lg:h-[25rem] bg-secondry rounded-xl p-8">
+
             <form action="" method="POST" class="flex flex-col" enctype="multipart/form-data">
                 @csrf
                 <p class="text-white">Login Form</p>
@@ -33,7 +34,7 @@
                         <label class="text-red-600">{{ $message }}</label>
                     @enderror
                 </div>
-                <div class="flex gap-1 mt-2 mb-5">
+                <div class="flex gap-1 mt-2 mb-6">
                     <input type="checkbox" name="" id="">
                     <span class="text-white text-xs">Remember me</span>
                     <a href="forgotPass" class="text-white text-xs ms-auto hover:underline hover:underline-offset-2">Forgot
