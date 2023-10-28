@@ -34,8 +34,13 @@
                         <label class="text-red-600">{{ $message }}</label>
                     @enderror
                 </div>
+<<<<<<< HEAD
+                <div class="flex gap-1 mt-2 mb-5">
+                    <input type="checkbox" name="rememberme" id="">
+=======
                 <div class="flex gap-1 mt-2 mb-6">
                     <input type="checkbox" name="" id="">
+>>>>>>> 92265c1a0e51de96086564b3f4758ecb1fe02706
                     <span class="text-white text-xs">Remember me</span>
                     <a href="forgotPass" class="text-white text-xs ms-auto hover:underline hover:underline-offset-2">Forgot
                         password</a>

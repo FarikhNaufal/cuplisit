@@ -21,12 +21,21 @@ class AuthController extends Controller
         $login_type = filter_var($request->input('EmailOrUsername'), FILTER_VALIDATE_EMAIL )
         ? 'email'
         : 'username';
+
         $request->merge([
             $login_type => $request->input('EmailOrUsername')
         ]);
 
-        if (Auth::attempt($request->only([$login_type, 'password']))) {
-            dd("Login success using $login_type");
+        $remember_me = $request->has('rememberme') ? true : false;
+
+        if (Auth::attempt($request->only([$login_type, 'password']), $remember_me)) {
+            $user = Auth::user();
+            dd(
+                "Login success using $login_type,
+                User: $user,
+                rememberme: $remember_me
+                "
+            );
         }
 
         dd('Credentials not match');
