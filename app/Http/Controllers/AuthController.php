@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\Recaptcha;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,8 @@ class AuthController extends Controller
             'password' => ['required','min:8' , 'regex:/^(?=.*[0-9])/'],
             'confirmPassword' => ['required', 'same:password'],
             'gender' => ['required', 'in:male,female,undefined'],
-            'dob' => ['required', 'date', 'before:today - 12 years']
+            'dob' => ['required', 'date', 'before:today - 12 years'],
+            'g-recaptcha' => ['required', new Recaptcha]
         ]);
 
         User::create([
