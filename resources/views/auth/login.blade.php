@@ -9,7 +9,7 @@
                 <p>{{session('success')}}</p>
             </div>
         @endif
-        <div class="lg:w-[40rem] w-[20rem] h-[20rem] lg:h-[25rem] bg-secondry rounded-xl p-8">
+        <div class="lg:w-[40rem] w-[20rem] bg-secondry rounded-xl p-8">
 
             <form action="" method="POST" class="flex flex-col" enctype="multipart/form-data">
                 @csrf
