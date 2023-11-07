@@ -31,3 +31,17 @@ Route::post('reset-password', [AuthController::class, 'reset_password'])->name('
 Route::get('/reset-password/{token}', function (string $token) {
     return view('auth.reset', ['token' => $token]);
 })->name('password.reset');
+
+// Routes View Abid
+Route::get('/', function () {
+    return view('posts.index');
+});
+Route::get('/users', function () {
+    return view('users.show');
+});
+Route::get('/setting', function () {
+    return view('users.edit');
+});
+Route::get('/changepassword', function () {
+    return view('users.changepassword');
+});
