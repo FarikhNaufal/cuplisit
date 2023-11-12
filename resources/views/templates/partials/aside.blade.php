@@ -91,22 +91,11 @@
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-100">
                 <div class="bg-white p-8 rounded-lg w-1/2" x-transition:enter="transition ease-out duration-300">
                     <h2 class="text-2xl font-semibold mb-4">Uploud Post</h2>
-                    <form action="">
-                        <textarea name="" id="post" cols="30" rows="6"
-                            class="w-full border-primary border-2 rounded-lg p-6 resize-none" placeholder="Write your text" required></textarea>
-                        <div class="flex grid-cols-2 mt-3 justify-between">
-                            <div class="flex">
-                                <input type="file" name="" id="" class="my-auto"
-                                    accept="file_extension|video/*|image/*" class="file:bg-primary">
-                            </div>
-                            <button type="submit"
-                                class="px-7 py-2 bg-primary rounded-lg w-1/2 text-white hover:bg-opacity-80">post</button>
-                        </div>
-                    </form>
+                    @include('templates.partials.postForm')
                     <div class="mt-4">
                         <button @click="isOpen = false"
                             class="bg-red-500 hover:bg-red-700 text-white font-light py-2 px-4 rounded">
-                            Tutup Modal
+                            Cancel
                         </button>
                     </div>
                 </div>
