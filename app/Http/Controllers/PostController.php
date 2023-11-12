@@ -13,16 +13,21 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
-        Auth::check() ?? $this->user = Auth::user();
-        $this->authorizeResource(Post::class, 'posts');
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+        });
+        // $this->authorizeResource(Post::class, 'posts');
     }
 
 
     public function index()
     {
-        // $posts = Post::all();
-        // return view('posts.index', compact('posts'));
+        $posts = Post::with(['comments' => function($query){
+            $query->latest();
+        }])->latest()->get();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -38,24 +43,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = $request->validate([
-            'media' => ['sometimes','required', 'mimes:png,jpg,mp4', 'size:10240'],
-            'caption' => ['sometimes','required', 'max:100'],
+            'media' => ['sometimes', 'required_without:caption', 'max:10240', 'mimetypes:image/jpeg,image/jpg,image/png,image/jfif,image/heic,video/mp4,video/quicktime', // Allowed photo and video formats
+            'dimensions:min_width=32,min_height=32,max_width=1920,max_height=1200'],
+            'caption' => ['sometimes', 'max:150', 'required_without:media'],
         ]);
+
 
         if ($request->has('media')) {
             $media = $request->file('media');
             $mediaName = time() . '.' . $media->getClientOriginalExtension();
-            $path = public_path("users/$this->user->id/posts/");
+            $path = public_path("users/" . $this->user->id . "/posts/");
             $media->move($path, $mediaName);
+            $data['media'] = $mediaName;
         }
 
-        $post['user_id'] = $this->user->id;
+        $data['user_id'] = $this->user->id;
+
 
         Post::create($data);
 
-        // return
+        return redirect('/')->with('success', 'Post created successfully.');
 
 
     }
