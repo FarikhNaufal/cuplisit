@@ -85,7 +85,7 @@
             class="bg-primary w-full hover:bg-opacity-80 mt-[10rem] mb-5 h-[5rem] rounded-lg p-3 text-white">
             <h1 class="text-3xl"><span class="text-4xl">+ </span> Post</h1>
         </button>
-        <div x-show="isOpen" class="">
+        <div x-cloak x-show="isOpen" class="">
             <div x-show="isOpen"
                 class="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-gray-800 bg-opacity-50"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-100">

@@ -7,6 +7,7 @@
     <meta name="description" content="Jangan Cuek Pliss...">
     <title>CUPLISIT</title>
     @vite('resources/css/app.css')
+    @livewireStyles
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Jost:wght@100;800&family=Montserrat&display=swap');
     </style>
@@ -22,8 +23,10 @@
             @yield('content')
         </div>
     </div>
+    @livewireScripts
+    
+
 </body>
     <!-- AlpineJS -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     @yield('script')
 </html>

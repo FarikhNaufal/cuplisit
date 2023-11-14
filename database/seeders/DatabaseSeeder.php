@@ -31,6 +31,15 @@ class DatabaseSeeder extends Seeder
             'pob' => 'Lamongan',
             'dob' => Date::create(2000, 1, 1)
         ]);
+        User::create([
+            'username' => 'farikhnaufal',
+            'name' => 'My Name User',
+            'email' => 'mfarikh9@gmail.com',
+            'password' => 'naufal123',
+            'gender' => 'male',
+            'pob' => 'Lamongan',
+            'dob' => Date::create(2000, 1, 1)
+        ]);
         // 'username',
         // 'name',
         // 'email',

@@ -24,8 +24,8 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::with(['comments' => function($query){
-            $query->latest();
+        $posts = Post::with(['comments' => function($comments){
+            $comments->latest();
         }])->latest()->get();
         return view('posts.index', compact('posts'));
     }
@@ -45,7 +45,7 @@ class PostController extends Controller
     {
         $data = $request->validate([
             'media' => ['sometimes', 'required_without:caption', 'max:10240', 'mimetypes:image/jpeg,image/jpg,image/png,image/jfif,image/heic,video/mp4,video/quicktime', // Allowed photo and video formats
-            'dimensions:min_width=32,min_height=32,max_width=1920,max_height=1200'],
+            'dimensions:min_width=32,min_height=32'],
             'caption' => ['sometimes', 'max:150', 'required_without:media'],
         ]);
 
