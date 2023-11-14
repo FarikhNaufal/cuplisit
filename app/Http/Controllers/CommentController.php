@@ -41,16 +41,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'content' => ['required'],
-            'post_id' => ['required'],
-        ]);
-
-        $data['user_id'] = $this->user->id;
-
-        Comment::create($data);
-
-        return redirect()->back();
+       
     }
 
     /**

@@ -24,4 +24,14 @@ class Post extends Model
     public function comments():HasMany {
         return $this->hasMany(Comment::class);
     }
+
+    public function likes():HasMany
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function dislikes():HasMany
+    {
+        return $this->hasMany(Dislike::class);
+    }
 }
