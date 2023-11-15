@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 Route::get('/register', function () {
     return view('auth.register');
 });
@@ -24,7 +27,8 @@ Route::get('/forgotPass', function () {
     return view('auth.forgot');
 })->name('password.request');
 
-Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'login'])->name('login-process');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('register', [AuthController::class, 'register']);
 Route::post('forgot-password', [AuthController::class, 'forgot_password'])->name('password.email');
 Route::post('reset-password', [AuthController::class, 'reset_password'])->name('password.update');
@@ -33,9 +37,9 @@ Route::get('/reset-password/{token}', function (string $token) {
 })->name('password.reset');
 
 // Routes View Abid
-Route::get('/', function () {
-    return view('posts.index');
-});
+Route::get('/', [PostController::class, 'index']);
+Route::resource('posts', PostController::class)->except('index');
+Route::resource('comments', CommentController::class);
 Route::get('/users', function () {
     return view('users.show');
 });

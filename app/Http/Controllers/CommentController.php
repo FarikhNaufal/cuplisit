@@ -4,12 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    private $user;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+        });
+        // $this->authorizeResource(Post::class, 'posts');
+    }
+
     public function index()
     {
         //
@@ -28,7 +41,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**

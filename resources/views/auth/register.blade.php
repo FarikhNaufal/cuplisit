@@ -76,9 +76,9 @@
                     <span class="text-white text-xs">Remember me</span>
                 </div>
 
-                <div class="g-recaptcha mt-2" data-sitekey="{{config('services.recaptcha.key')}}">
+                <div class="g-recaptcha mt-2" data-sitekey="{{env('RECAPTCHA_SITE_KEY')}}">
                 </div>
-                @error('g-recaptcha')
+                @error('g-recaptcha-response')
                     <label class="text-red-600">{{ $message }}</label>
                 @enderror
 

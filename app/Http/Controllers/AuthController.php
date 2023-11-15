@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -30,16 +31,10 @@ class AuthController extends Controller
         $remember_me = $request->has('rememberme') ? true : false;
 
         if (Auth::attempt($request->only([$login_type, 'password']), $remember_me)) {
-            $user = Auth::user();
-            dd(
-                "Login success using $login_type,
-                User: $user,
-                rememberme: $remember_me
-                "
-            );
+            $request->session()->regenerate();
+            return redirect()->intended();
         }
 
-        dd('Credentials not match');
     }
 
     public function register(Request $request){
@@ -50,7 +45,7 @@ class AuthController extends Controller
             'confirmPassword' => ['required', 'same:password'],
             'gender' => ['required', 'in:male,female,undefined'],
             'dob' => ['required', 'date', 'before:today - 12 years'],
-            'g-recaptcha' => ['required', new Recaptcha]
+            'g-recaptcha-response' => ['required', new Recaptcha]
         ]);
 
         User::create([
@@ -102,5 +97,11 @@ class AuthController extends Controller
         return $status === Password::PASSWORD_RESET
                     ? redirect()->route('login')->with('success', __($status))
                     : back()->withErrors(['email' => [__($status)]]);
+    }
+
+    public function logout(){
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

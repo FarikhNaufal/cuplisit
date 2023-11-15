@@ -7,6 +7,7 @@
     <meta name="description" content="Jangan Cuek Pliss...">
     <title>CUPLISIT</title>
     @vite('resources/css/app.css')
+    @livewireStyles
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jockey+One&family=Jost:wght@100;800&family=Montserrat&display=swap');
     </style>
@@ -16,14 +17,16 @@
     @include('templates.partials.aside')
     <div class="relative w-full flex flex-col h-screen">
         {{-- navbar --}}
-        @include('templates.partials.navbar')
+        @livewire('navbar')
         <div class="lg:p-9 p-4 overflow-scroll max-h-max lg:overflow-hidden">
             {{-- content --}}
             @yield('content')
         </div>
     </div>
+    @livewireScripts
+
+
 </body>
     <!-- AlpineJS -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     @yield('script')
 </html>
