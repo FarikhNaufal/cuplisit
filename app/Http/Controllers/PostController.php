@@ -44,8 +44,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'media' => ['sometimes', 'required_without:caption', 'max:10240', 'mimetypes:image/jpeg,image/jpg,image/png,image/jfif,image/heic,video/mp4,video/quicktime', // Allowed photo and video formats
-            'dimensions:min_width=32,min_height=32'],
+            'media' => ['sometimes', 'required_without:caption', 'max:10240',
+            'mimetypes:image/*,video/*',
+            // 'mimetypes:image/jpeg,image/jpg,image/png,image/jfif,image/heic,video/mp4,video/quicktime,video/MP4', // Allowed photo and video formats
+            // 'dimensions:min_width=32,min_height=32'
+        ],
             'caption' => ['sometimes', 'max:150', 'required_without:media'],
         ]);
 

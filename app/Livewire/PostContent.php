@@ -11,12 +11,9 @@ class PostContent extends Component
     public $post;
     public $content;
 
-
-
     protected $rules = [
         'content' => 'required',
     ];
-
 
     public function render()
     {
@@ -26,7 +23,6 @@ class PostContent extends Component
             'dislikes' => $this->post->dislikes()->count(),
             'userHasLiked' => $this->userHasLiked(),
             'userHasDisliked' => $this->userHasDisliked()
-
         ]);
     }
 
@@ -48,8 +44,8 @@ class PostContent extends Component
             $this->post->likes()->create([
                 'user_id' => Auth::id(),
             ]);
-
             $this->post->dislikes()->where('user_id', Auth::id())->delete();
+            
         } else {
             $this->post->likes()->where('user_id', Auth::id())->delete();
         }

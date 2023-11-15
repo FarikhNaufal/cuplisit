@@ -17,14 +17,14 @@
     @include('templates.partials.aside')
     <div class="relative w-full flex flex-col h-screen">
         {{-- navbar --}}
-        @include('templates.partials.navbar')
+        @livewire('navbar')
         <div class="lg:p-9 p-4 overflow-scroll max-h-max lg:overflow-hidden">
             {{-- content --}}
             @yield('content')
         </div>
     </div>
     @livewireScripts
-    
+
 
 </body>
     <!-- AlpineJS -->

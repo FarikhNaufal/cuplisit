@@ -12,9 +12,12 @@
                 <div class="flex justify-between">
                     <div class="flex">
                         <img src="images/faiz.jpg" alt="profile" class="w-12 h-12 rounded-full border-primary border-2">
-                        <p class="my-auto ml-4 text-xl">{{ $post->user->username }}</p>
+                        <div class="flex-col  ml-4">
+                            <p class="my-auto text-xl">{{ $post->user->username }}</p>
+                            <p class="mb-3 text-sm text-neutral-500">{{ $post->created_at->diffForHumans() }}</p>
+                        </div>
                     </div>
-                    <div class="mt-auto mx-8 my-auto" x-data="{ isOpen: false }">
+                    <div class="mt-auto my-auto" x-data="{ isOpen: false }">
                         <button @click="isOpen = !isOpen">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="10" viewBox="0 0 40 10"
                                 fill="none">
@@ -43,17 +46,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full mt-3">
+                <div class="w-full mt-3 mb-1">
                     <p>{{ $post->caption }}</p>
                 </div>
                 @if ($post->media)
                     @php
-                        $videoExtensions = ['mp4', 'mkv'];
+                        $videoExtensions = ['mp4', 'avi', 'mkv', 'mov', 'wmv', 'flv', 'webm'];
                         $extension = pathinfo($post->media, PATHINFO_EXTENSION);
                     @endphp
 
                     @if (in_array($extension, $videoExtensions))
-                        <video controls class="rounded-xl aspect-square object-cover lg:w-1/2 transition">
+                        <video controls class="rounded-xl  object-cover lg:w-full transition">
                             <source src="{{ asset('users/' . $post->user->id . '/posts/' . $post->media) }}"
                                 type="video/{{ $extension }}">
                             Your browser does not support the video tag.
@@ -64,7 +67,6 @@
                     @endif
                 @endif
 
-                <p class="mb-3 text-sm text-neutral-500">{{ $post->created_at->diffForHumans() }}</p>
                 @livewire('post-content', ['post' => $post])
             @endforeach
 
@@ -134,3 +136,4 @@
 
     </div>
 @endsection
+

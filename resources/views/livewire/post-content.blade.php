@@ -1,4 +1,4 @@
-<div>
+<div class="mt-3">
     <div x-data="{ showComments: false }">
         <div class="flex flex-wrap gap-2">
             <div>
@@ -34,7 +34,8 @@
 
             </button>
             <div class="w-full">
-                <div x-cloak x-show="showComments" class="mt-4">
+                <div x-cloak x-show="showComments"  x-transition:enter="transition ease-in"
+                x-transition:enter-start="opacity-0 scale-100" x-transition:leave="transition ease-in duration-800"  class="mt-4">
                     <ul>
                         @foreach ($comments as $comment)
                             <li class="flex gap-2 mb-2">
