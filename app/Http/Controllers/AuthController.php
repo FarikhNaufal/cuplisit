@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\Recaptcha;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,21 @@ class AuthController extends Controller
         $login_type = filter_var($request->input('EmailOrUsername'), FILTER_VALIDATE_EMAIL )
         ? 'email'
         : 'username';
+
         $request->merge([
             $login_type => $request->input('EmailOrUsername')
         ]);
 
-        if (Auth::attempt($request->only([$login_type, 'password']))) {
-            dd("Login success using $login_type");
+        $remember_me = $request->has('rememberme') ? true : false;
+
+        if (Auth::attempt($request->only([$login_type, 'password']), $remember_me)) {
+            $user = Auth::user();
+            dd(
+                "Login success using $login_type,
+                User: $user,
+                rememberme: $remember_me
+                "
+            );
         }
 
         dd('Credentials not match');
@@ -39,7 +49,8 @@ class AuthController extends Controller
             'password' => ['required','min:8' , 'regex:/^(?=.*[0-9])/'],
             'confirmPassword' => ['required', 'same:password'],
             'gender' => ['required', 'in:male,female,undefined'],
-            'dob' => ['required', 'date', 'before:today - 12 years']
+            'dob' => ['required', 'date', 'before:today - 12 years'],
+            'g-recaptcha' => ['required', new Recaptcha]
         ]);
 
         User::create([
