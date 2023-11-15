@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="mr-3" x-data="{ isOpen: false }">
+    <div class="mr-3 lg:hidden" x-data="{ isOpen: false }">
         <button @click="isOpen = true"
             class="bg-primary w-full hover:bg-opacity-80 rounded-lg px-4 py-1 text-white">
             <h1 class="text-xl">+Post</h1>
