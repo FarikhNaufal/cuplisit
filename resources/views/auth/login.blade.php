@@ -11,7 +11,7 @@
         @endif
         <div class="lg:w-[40rem] w-[20rem] bg-secondry rounded-xl p-8">
 
-            <form action="" method="POST" class="flex flex-col" enctype="multipart/form-data">
+            <form action="{{route('login-process')}}" method="POST" class="flex flex-col" enctype="multipart/form-data">
                 @csrf
                 <p class="text-white">Login Form</p>
                 <input type="text"
