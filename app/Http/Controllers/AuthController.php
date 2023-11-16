@@ -16,7 +16,7 @@ class AuthController extends Controller
     //
     public function login(Request $request){
         $request->validate([
-            'EmailOrUsername' => ['required'],
+            'EmailOrUsername' => ['required', 'min:4'],
             'password' => ['required', 'min:8']
         ]);
 
@@ -33,6 +33,8 @@ class AuthController extends Controller
         if (Auth::attempt($request->only([$login_type, 'password']), $remember_me)) {
             $request->session()->regenerate();
             return redirect()->intended();
+        } else {
+            return redirect()->back()->withInput()->with('loginerror', 'Wrong credentials.');
         }
 
     }
@@ -56,7 +58,12 @@ class AuthController extends Controller
             'dob' => $request->dob,
         ]);
 
-        dd('success create user');
+        $remember_me = $request->has('rememberme') ? true : false;
+
+        if (Auth::attempt($request->only(['email', 'password']), $remember_me)) {
+            $request->session()->regenerate();
+            return redirect()->intended();
+        }
     }
 
     public function forgot_password(Request $request){

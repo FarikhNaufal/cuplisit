@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="flex gap-1 mt-2">
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="rememberme" id="">
                     <span class="text-white text-xs">Remember me</span>
                 </div>
 
