@@ -49,3 +49,6 @@ Route::get('/setting', function () {
 Route::get('/changepassword', function () {
     return view('users.changepassword');
 });
+Route::get('/viewprofile', function () {
+    return view('users.show');
+});
