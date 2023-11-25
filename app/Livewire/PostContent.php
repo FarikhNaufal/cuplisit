@@ -36,7 +36,7 @@ class PostContent extends Component
             'content' => $this->content,
         ]);
 
-        $this->content = '';
+        $this->content = null;
     }
     public function likeButton()
     {

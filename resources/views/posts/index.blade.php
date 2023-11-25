@@ -75,16 +75,16 @@
         {{-- AsideRight --}}
         <div class="w-full bg-white rounded-xl sm:hidden overflow-y-auto lg:flex">
             <div class="m-6 w-full">
-                <p class="mb-4 text-lg">Following you</p>
+                <p class="mb-4 text-lg">People Following you</p>
                 {{-- Isi --}}
                 <div class="flex gap-9 mt-3">
-                    <a href="" class="w-full">
+                    <a href="/viewprofile" class="w-full">
                         <div class="flex gap-4 items-center">
-                            <img src="images/faiz.jpg" alt="" class="border border-primary w-11 rounded-full">
+                            <img src="images/admin.png" alt="" class="border border-primary w-11 rounded-full">
 
                             <div class="flex flex-col">
-                                <p class="text-md">Farikh Naufal</p>
-                                <p class="text-xs">Alwayys You</p>
+                                <p class="text-md">Admin Cuplisit</p>
+                                <p class="text-xs">Halo semua saya admin</p>
                             </div>
                         </div>
                     </a>
