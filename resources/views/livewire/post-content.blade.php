@@ -39,8 +39,8 @@
                     <ul>
                         @foreach ($comments as $comment)
                             <li class="flex gap-2 mb-2">
-                                <img src="images/faiz.jpg" alt="profile"
-                                    class="w-8 h-8 rounded-full border-primary border-2">
+                                <img src="{{$comment->user->avatar ? asset('users/'.$comment->user->id.'/'.$comment->user->avatar) : asset('images/user.jpg')}}" alt="profile"
+                                    class="w-8 h-8 rounded-full aspect-square object-cover border-primary border-2">
                                 <div class="flex flex-col">
                                     <div class="flex gap-2">
                                         <p>
@@ -59,9 +59,9 @@
                             </li>
                         @endforeach
 
-                        <li class="flex gap-2 mb-2">
-                            <img src="images/faiz.jpg" alt="profile"
-                                class="w-8 h-8 rounded-full border-primary border-2">
+                        <li class="flex gap-3 mb-2">
+                            <img src="{{Auth::user()->avatar ? asset('users/'.Auth::user()->id.'/'.Auth::user()->avatar) : asset('images/user.jpg')}}" alt="profile"
+                                class="w-8 h-8 object-cover aspect-square rounded-full border-primary border-2">
                             <form wire:submit.prevent="storeComment" class="flex w-full gap-2">
                                 @csrf
                                 {{-- <input type="hidden" wire:model="post_id" value="{{ $post->id }}"> --}}
