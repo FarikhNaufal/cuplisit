@@ -1,7 +1,7 @@
 <aside class="flex-col bg-white w-[21rem] max-h-max hidden lg:flex rounded-br-3xl shadow-lg z-50">
-    <div class="flex justify-center pt-20">
+    <a href="/" class="flex justify-center pt-20">
         <h1 class="text-5xl text-secondry">CUPLIST<span class="text-primary">.IT</span></h1>
-    </div>
+    </a>
     <div class="mx-8">
         <button
             class=" group w-full flex mt-10 p-3 hover:bg-primary text-primary text-lg rounded-xl border border-1 shadow-lg"

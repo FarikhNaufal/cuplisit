@@ -40,15 +40,9 @@ Route::get('/reset-password/{token}', function (string $token) {
 Route::get('/', [PostController::class, 'index']);
 Route::resource('posts', PostController::class)->except('index');
 Route::resource('comments', CommentController::class);
-Route::get('/users', function () {
-    return view('users.show');
-});
-Route::get('/setting', function () {
-    return view('users.edit');
-});
+Route::resource('users', UserController::class);
+
 Route::get('/changepassword', function () {
     return view('users.changepassword');
 });
-Route::get('/viewprofile', function () {
-    return view('users.show');
-});
+

@@ -12,9 +12,8 @@ class Navbar extends Component
     public $usersearch = [];
     public function render()
     {
-        $user = Auth::user();
         $usersearch = $this->usersearch;
-        return view('livewire.navbar', compact('user','usersearch'));
+        return view('livewire.navbar', compact('usersearch'));
     }
 
     public function autocomplete()

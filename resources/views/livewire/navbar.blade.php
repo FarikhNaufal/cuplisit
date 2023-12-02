@@ -50,16 +50,23 @@
             </div>
         </div>
         <div x-data="{ isOpen: false, search: '' }" @click.away="isOpen = false" class="ms-auto w-max md:w-64 me-3 md:me-5">
-            <input type="text" wire:model="search" x-model="search" wire:keydown="autocomplete" x-on:keydown="isOpen = true" x-on:input="isOpen = search.length > 0"
-                class="border-2 border-primary rounded-xl w-max md:w-64 px-2 py-1" placeholder="Search">
+            <input type="text" wire:model="search" x-model="search" wire:keydown="autocomplete"
+                x-on:keydown="isOpen = true" x-on:input="isOpen = search.length > 0"
+                class="border-2 border-primary rounded-xl w-max md:w-64 px-2 py-1" placeholder="Search users">
 
-            <div x-cloak x-show="isOpen" class="absolute w-fit md:w-64 mt-2 px-4 py-2 bg-white border rounded-xl shadow-lg">
-                @if(count($usersearch) > 0)
-                <ul>
-                    @foreach ($usersearch as $user)
-                        <li class="p-2 hover:bg-gray-200">{{ $user->username }}</li>
-                    @endforeach
-                </ul>
+            <div x-cloak x-show="isOpen"
+                class="absolute w-fit md:w-64 mt-2 px-2 lg:px-4 py-2 bg-white border rounded-xl shadow-lg">
+                @if (count($usersearch) > 0)
+                    <ul>
+                        @foreach ($usersearch as $user)
+                            <a href="{{route('users.show', $user->username)}}">
+                                <li class="p-2 hover:bg-gray-200 flex gap-2 items-center rounded-lg line-clamp-1">
+                                    <img src="{{$user->avatar ? asset('users/'.$user->id.'/'.$user->avatar) : asset('images/user.jpg')}}" alt="profile" class="w-8 h-8 aspect-square object-cover rounded-full border-primary border-2">
+                                    {{ $user->username }}
+                                </li>
+                            </a>
+                        @endforeach
+                    </ul>
                 @else
                     <p class="text-neutral-500">No matching users</p>
                 @endif
@@ -69,14 +76,16 @@
         <div x-data="{ isOpen: false }" class="me-0">
             <button @click="isOpen = !isOpen"
                 class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-primary hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                <img src="/images/faiz.jpg">
+                <img src="{{Auth::user()->avatar ? asset('users/'.Auth::user()->id.'/'.Auth::user()->avatar) : asset('images/user.jpg')}}">
             </button>
-            <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
-            <div x-cloak x-show="isOpen" class="absolute w-auto right-3 bg-white rounded-lg shadow-lg py-4 px-3 mt-3 md:mt-5">
-                <p class="text-gray-700 ">{{ $user->username }}</p>
-                <p class="text-gray-700 ">{{ $user->email }}</p>
+            {{-- <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button> --}}
+            <div x-cloak x-show="isOpen"
+                class="absolute w-auto right-3 bg-white rounded-lg shadow-lg py-4 px-3 mt-3 md:mt-5">
+                <a href="{{route('users.show', Auth::user()->username)}}">
+                    <p class="text-gray-700 ">{{ Auth::user()->username }}</p>
+                    <p class="text-gray-700 ">{{ Auth::user()->email }}</p></a>
                 <div class="bg-gray-700 w-full h-[1px] my-2"></div>
-                <a href="setting" class="block  account-link hover:text-primary">Edit Profile</a>
+                <a href="{{route('users.edit', Auth::user()->username)}}" class="block  account-link hover:text-primary">Edit Profile</a>
                 <form action="{{ route('logout') }}" enctype="multipart/form-data" method="post">
                     @csrf
                     <button class="block  account-link hover:text-primary">Logout</button>

@@ -54,7 +54,7 @@
 
                 <div class="flex items-center justify-between">
                     <div class="flex flex-col gap-y-2">
-                        <input type="date" class="mt-3 mb-2 text-primary rounded-md px-2 py-1" placeholder="Email"
+                        <input type="date" class="mt-3 mb-2 text-primary rounded-md px-2 py-1"
                             name="dob" value="{{old('dob')}}">
                         @error('dob')
                             <label class="text-red-600">{{ $message }}</label>

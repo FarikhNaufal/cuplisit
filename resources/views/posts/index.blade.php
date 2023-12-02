@@ -11,7 +11,7 @@
                 {{-- Isi Post --}}
                 <div class="flex justify-between">
                     <div class="flex">
-                        <img src="images/faiz.jpg" alt="profile" class="w-12 h-12 rounded-full border-primary border-2">
+                        <img src="{{$post->user->avatar ? asset('users/'.$post->user->id.'/'.$post->user->avatar) : asset('images/user.jpg')}}" alt="profile" class="w-12 h-12 aspect-square object-cover rounded-full border-primary border-2">
                         <div class="flex-col  ml-4">
                             <p class="my-auto text-xl">{{ $post->user->username }}</p>
                             <p class="mb-3 text-sm text-neutral-500">{{ $post->created_at->diffForHumans() }}</p>
