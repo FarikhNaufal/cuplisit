@@ -1,6 +1,6 @@
 <aside class="flex-col bg-white w-[21rem] max-h-max hidden lg:flex rounded-br-3xl shadow-lg z-50">
     <a href="/" class="flex justify-center pt-20">
-        <h1 class="text-5xl text-secondry">CUPLIST<span class="text-primary">.IT</span></h1>
+        <h1 class="text-5xl text-secondry">CUPLIS<span class="text-primary">.IT</span></h1>
     </a>
     <div class="mx-8">
         <button
@@ -15,7 +15,7 @@
         </button>
         <button
             class=" group w-full flex mt-4 p-3 hover:bg-primary text-primary text-lg rounded-xl border border-1 shadow-lg"
-            onclick="window.location.href=''">
+            onclick="window.location.href='/explore'">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                 class="mx-4 group-hover:fill-white fill-primary my-1" viewBox="0 0 30 21" fill="none">
                 <path
@@ -25,7 +25,7 @@
         </button>
         <button
             class=" group w-full flex mt-4 p-3 hover:bg-primary text-primary text-lg rounded-xl border border-1 shadow-lg"
-            onclick="window.location.href='/setting'">
+            onclick="window.location.href='{{ route('users.edit', Auth::user()->username) }}'">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
                 class="mx-4 group-hover:fill-white fill-primary my-1" viewBox="0 0 30 30" fill="none">
                 <path
@@ -34,52 +34,7 @@
             <h1 class="group-hover:text-white">Settings</h1>
         </button>
     </div>
-    {{-- semangka --}}
-    <div class="relative mx-20 mt-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="absolute w-28" enable-background="new 0 0 47.5 47.5" viewBox="0 0 47.5 47.5"
-            id="watermelon">
-            <defs>
-                <clipPath id="a">
-                    <path d="M0 38h38V0H0v38Z"></path>
-                </clipPath>
-            </defs>
-            <g clip-path="url(#a)" transform="matrix(1.25 0 0 -1.25 0 47.5)">
-                <path fill="#5c913b"
-                    d="M0 0a17.031 17.031 0 0 1-1.472-6.928c0-9.665 8.059-17.5 18-17.5 7.746 0 14.33 4.767 16.868 11.441L0 0Z"
-                    transform="translate(3.472 30.428)"></path>
-                <path fill="#ffe8b6"
-                    d="M0 0a15.116 15.116 0 0 1-1.332-6.205c0-8.59 7.164-15.555 16-15.555 6.905 0 12.77 4.26 15.013 10.218L0 0Z"
-                    transform="translate(5.332 29.705)"></path>
-                <path fill="#dd2e44"
-                    d="M0 0a13.23 13.23 0 0 1-1.191-5.481c0-7.518 6.268-13.612 14-13.612 6.063 0 11.21 3.753 13.156 8.995L0 0Z"
-                    transform="translate(7.19 28.981)"></path>
-                <path
-                    d="M0 0c-.307-.46-.741-.708-.971-.555-.23.154-.168.65.139 1.11.307.46.741.708.971.554C.369.956.307.46 0 0"
-                    transform="translate(10.916 22.723)"></path>
-                <path
-                    d="M0 0c-.307-.46-.741-.708-.971-.555-.23.154-.168.65.139 1.11.307.46.741.708.971.554C.369.956.307.46 0 0"
-                    transform="translate(16.916 21.723)"></path>
-                <path
-                    d="M0 0c.05-.551-.132-1.016-.406-1.041-.276-.025-.538.4-.588.951-.051.551.132 1.016.406 1.04C-.312.977-.05.552 0 0"
-                    transform="translate(21.998 17.045)"></path>
-                <path
-                    d="M0 0c.05-.551-.132-1.016-.406-1.041-.276-.025-.538.4-.588.951-.05.551.132 1.016.406 1.04C-.312.977-.05.552 0 0"
-                    transform="translate(12.998 19.045)"></path>
-                <path
-                    d="M0 0c-.333-.441-.78-.663-1-.497-.222.166-.129.658.204 1.099.334.441.781.663 1 .497C.426.933.334.441 0 0"
-                    transform="translate(16.9 13.7)"></path>
-                <path
-                    d="M0 0c.272-.481.299-.979.06-1.115-.242-.137-.657.142-.929.624-.274.48-.299.978-.059 1.115C-.687.762-.273.482 0 0"
-                    transform="translate(24.936 13.245)"></path>
-                <path
-                    d="M0 0c.303-.463.362-.958.131-1.109-.231-.153-.663.099-.966.562-.303.462-.361.958-.131 1.109C-.735.715-.303.464 0 0"
-                    transform="translate(17.918 18.273)"></path>
-                <path
-                    d="M0 0c-.333-.441-.78-.663-1.001-.497-.221.166-.129.658.205 1.099.333.442.78.663 1 .497C.426.933.335.441 0 0"
-                    transform="translate(26.9 16.7)"></path>
-            </g>
-        </svg>
-    </div>
+
     <div class="mt-auto mx-8" x-data="{ isOpen: false }">
         <button @click="isOpen = true"
             class="bg-primary w-full hover:bg-opacity-80 mt-[10rem] mb-5 h-[5rem] rounded-lg p-3 text-white">
@@ -89,9 +44,48 @@
             <div x-show="isOpen"
                 class="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-gray-800 bg-opacity-50"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-100">
-                <div class="bg-white p-8 rounded-lg w-1/2" x-transition:enter="transition ease-out duration-300">
-                    <h2 class="text-2xl font-semibold mb-4">Uploud Post</h2>
-                    @include('templates.partials.postForm')
+                <div class="bg-white p-6 rounded-lg w-2/5" x-transition:enter="transition ease-out duration-300">
+                    <div class="py-3 flex gap-3 items-center">
+                        <img src="{{ Auth::user()->avatar ? asset('users/' . Auth::user()->id . '/' . Auth::user()->avatar) : asset('images/user.jpg') }}"
+                            alt="profile"
+                            class="w-12 h-12 aspect-square object-cover rounded-full border-primary border-2">
+                        <h2 class="text-lg">Post something</h2>
+                    </div>
+                    <hr class="mb-4">
+                    <form action="{{ route('posts.store') }}" class="flex gap-3" enctype="multipart/form-data"
+                        method="post">
+                        @csrf
+                        <div class="relative hidden" id="media-parent1">
+                            <img id="media-preview1" class="w-20 md:w-32 aspect-square object-cover rounded-lg hidden ">
+                            <span id="delete-icon1"
+                                class="delete-icon1 absolute top-1 p-1 rounded-lg text-sm bg-red-500 bg-opacity-20 right-1 cursor-pointer hidden"
+                                onclick="deleteMediax()">🗑️</span>
+                        </div>
+                        <div class="flex flex-col w-full gap-3">
+                            <textarea name="caption" cols="30" rows="3"
+                                class="w-full bg-neutral-50 outline outline-1 focus:outline-2 outline-neutral-200 p-3 rounded-lg"
+                                placeholder="What's on your mind ?"></textarea>
+                            @error('caption')
+                                <label class="text-red-600">{{ $message }}</label>
+                            @enderror
+                            @error('media')
+                                <label class="text-red-600">{{ $message }}</label>
+                            @enderror
+                            <div class="flex gap-4 justify-end">
+                                <input type="file" id="media-input1" accept="image/*, video/*" name="media" class="hidden"
+                                    onchange="previewMediax(this)">
+                                <button type="button" onclick="openPostInputx()"
+                                    class="h-fit flex items-center text-neutral-400 gap-1 text-sm"
+                                    id="add-media-btn1">
+                                    Add media
+                                    <img src="{{ asset('svg/add-media.svg') }}" alt="" class="w-8 h-8">
+                                </button>
+                                <button type="submit"
+                                    class="px-5 py-2 text-sm bg-primary rounded-lg w-fit text-white hover:bg-opacity-80">Post</button>
+                            </div>
+                        </div>
+
+                    </form>
                     <div class="mt-4">
                         <button @click="isOpen = false"
                             class="bg-red-500 hover:bg-red-700 text-white font-light py-2 px-4 rounded">
@@ -105,3 +99,45 @@
         <p class="text-black text-center mb-5">Team @CUPLISIT</p>
     </div>
 </aside>
+<script>
+    function previewMediax(input) {
+        const preview = document.getElementById('media-preview1');
+        const parent = document.getElementById('media-parent1');
+        const addMediaBtn = document.getElementById('add-media-btn1')
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function() {
+            preview.src = reader.result;
+            preview.classList.remove('hidden');
+            parent.classList.remove('hidden')
+            document.getElementById('delete-icon1').classList.remove(
+                'hidden');
+            addMediaBtn.classList.add('hidden')
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.classList.add('hidden');
+            parent.classList.add('hidden');
+            document.getElementById('delete-icon1').classList.add(
+                'hidden');
+            addMediaBtn.classList.remove('hidden')
+        }
+    }
+
+    function deleteMediax() {
+        // Fungsi ini akan dijalankan ketika ikon hapus diklik
+        document.getElementById('media-preview1').src = ''; // Menghapus gambar
+        document.getElementById('media-preview1').classList.add('hidden'); // Menyembunyikan gambar
+        document.getElementById('delete-icon1').classList.add('hidden'); // Menyembunyikan ikon hapus
+        document.getElementById('media-parent1').classList.add('hidden');
+        document.getElementById('add-media-btn1').classList.remove('hidden');
+        document.getElementById('media-input1').value = ''; // Mengosongkan nilai input file
+    }
+
+    function openPostInputx() {
+        document.getElementById('media-input1').click();
+    }
+</script>

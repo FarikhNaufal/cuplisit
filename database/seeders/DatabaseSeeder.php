@@ -23,11 +23,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
-            'username' => 'naufalyuwam',
+            'username' => 'naufalyuwan',
             'name' => 'Naufal Yuwan Kanugraha',
             'email' => 'yuwan@gmail.com',
             'password' => 'user12345',
             'gender' => 'male',
+            'bio' => 'surabaya on myway',
             'pob' => 'Lamongan',
             'dob' => Date::create(2000, 1, 1)
         ]);
@@ -38,6 +39,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'naufal123',
             'gender' => 'male',
             'pob' => 'Lamongan',
+            'bio' => 'Bismillah',
             'dob' => Date::create(2000, 1, 1)
         ]);
 

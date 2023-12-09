@@ -38,11 +38,10 @@ Route::get('/reset-password/{token}', function (string $token) {
 
 // Routes View Abid
 Route::get('/', [PostController::class, 'index']);
+Route::get('/explore', [PostController::class, 'explore']);
 Route::resource('posts', PostController::class)->except('index');
 Route::resource('comments', CommentController::class);
 Route::resource('users', UserController::class);
 
-Route::get('/changepassword', function () {
-    return view('users.changepassword');
-});
+Route::post('/changepassword/{user}', [UserController::class, 'changePassword'])->name('changepassword');
 

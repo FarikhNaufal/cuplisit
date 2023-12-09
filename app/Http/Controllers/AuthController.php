@@ -50,6 +50,8 @@ class AuthController extends Controller
             'g-recaptcha-response' => ['required', new Recaptcha]
         ]);
 
+
+
         User::create([
             'username' => strtolower($request->username),
             'email' => $request->email,
@@ -111,4 +113,6 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+
 }

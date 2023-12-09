@@ -31,7 +31,7 @@
                         </h2>
                     </div>
                 @else
-                    @foreach ($user->posts as $post)
+                    @foreach ($user->posts->sortByDesc('created_at') as $post)
                         {{-- Isi Post --}}
                         <div class="flex justify-between">
                             <div class="flex">

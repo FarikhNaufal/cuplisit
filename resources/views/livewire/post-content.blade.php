@@ -34,7 +34,7 @@
 
             </button>
             <div class="w-full">
-                <div x-cloak x-show="showComments"  x-transition:enter="transition ease-in"
+                <div x-cloak x-show="showComments" x-transition:enter="transition ease-in"
                 x-transition:enter-start="opacity-0 scale-100" x-transition:leave="transition ease-in duration-800"  class="mt-4">
                     <ul>
                         @foreach ($comments as $comment)
@@ -62,13 +62,12 @@
                         <li class="flex gap-3 mb-2">
                             <img src="{{Auth::user()->avatar ? asset('users/'.Auth::user()->id.'/'.Auth::user()->avatar) : asset('images/user.jpg')}}" alt="profile"
                                 class="w-8 h-8 object-cover aspect-square rounded-full border-primary border-2">
-                            <form wire:submit.prevent="storeComment" class="flex w-full gap-2">
+                            <form wire:submit="storeComment" class="flex w-full gap-2">
                                 @csrf
-                                {{-- <input type="hidden" wire:model="post_id" value="{{ $post->id }}"> --}}
-                                <input type="text" wire:model="content" id=""
+                                <input type="text" wire:model="content"
                                     class="w-full border-primary border-2 rounded-lg p-2"
-                                    placeholder="Write your coment">
-                                <button type="submit" class="bg-primary px-4 rounded-lg">
+                                    placeholder="Write your comment">
+                                <button type="submit"  class="bg-primary px-4 rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                                         viewBox="0 0 100 100" fill="none">
                                         <path

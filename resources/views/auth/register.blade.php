@@ -12,13 +12,13 @@
                 <p class="text-white">Register Form</p>
                 <input type="text"
                     class="mt-3 mb-2 placeholder:text-opacity-60 placeholder:text-primary rounded-md w-full px-2 py-1"
-                    placeholder="Username" name="username" value="{{old('username')}}">
+                    placeholder="Username" name="username" value="{{ old('username') }}">
                 @error('username')
                     <label class="text-red-600">{{ $message }}</label>
                 @enderror
                 <input type="email"
                     class="mt-3 mb-2 placeholder:text-opacity-60 placeholder:text-primary rounded-md w-full px-2 py-1"
-                    placeholder="Email" name="email" value="{{old('email')}}">
+                    placeholder="Email" name="email" value="{{ old('email') }}">
                 @error('email')
                     <label class="text-red-600">{{ $message }}</label>
                 @enderror
@@ -54,8 +54,8 @@
 
                 <div class="flex items-center justify-between">
                     <div class="flex flex-col gap-y-2">
-                        <input type="date" class="mt-3 mb-2 text-primary rounded-md px-2 py-1"
-                            name="dob" value="{{old('dob')}}">
+                        <input type="date" class="mt-3 mb-2 text-primary rounded-md px-2 py-1" name="dob"
+                            value="{{ old('dob') }}">
                         @error('dob')
                             <label class="text-red-600">{{ $message }}</label>
                         @enderror
@@ -76,14 +76,15 @@
                     <span class="text-white text-xs">Remember me</span>
                 </div>
 
-                <div class="g-recaptcha mt-2" data-sitekey="{{env('RECAPTCHA_SITE_KEY')}}">
+                <div class="g-recaptcha flex mt-3 scale-75 md:scale-100 -ms-8 md:ms-0" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}">
                 </div>
                 @error('g-recaptcha-response')
                     <label class="text-red-600">{{ $message }}</label>
                 @enderror
 
 
-                <button class="w-full py-4 text-white rounded-md bg-primary mt-7 mb-2 hover:bg-opacity-60">REGISTER NOW</button>
+                <button class="w-full py-4 text-white rounded-md bg-primary mt-7 mb-2 hover:bg-opacity-60">REGISTER
+                    NOW</button>
                 <a href="login" class="mx-auto text-white text-sm hover:underline hover:underline-offset-2">I already have
                     an account</a>
             </form>
@@ -92,39 +93,39 @@
 @endsection
 
 @section('script')
-<script>
-    const passwordToggle = document.querySelector('.js-password-toggle')
+    <script>
+        const passwordToggle = document.querySelector('.js-password-toggle')
 
-    passwordToggle.addEventListener('change', function() {
-        const password = document.querySelector('.js-password'),
-            passwordLabel = document.querySelector('.js-password-label')
+        passwordToggle.addEventListener('change', function() {
+            const password = document.querySelector('.js-password'),
+                passwordLabel = document.querySelector('.js-password-label')
 
-        if (password.type === 'password') {
-            password.type = 'text'
-            passwordLabel.innerHTML = 'hide'
-        } else {
-            password.type = 'password'
-            passwordLabel.innerHTML = 'show'
-        }
+            if (password.type === 'password') {
+                password.type = 'text'
+                passwordLabel.innerHTML = 'hide'
+            } else {
+                password.type = 'password'
+                passwordLabel.innerHTML = 'show'
+            }
 
-        password.focus()
-    });
-    const cpasswordToggle = document.querySelector('.cjs-password-toggle')
+            password.focus()
+        });
+        const cpasswordToggle = document.querySelector('.cjs-password-toggle')
 
-    cpasswordToggle.addEventListener('change', function() {
-        const password = document.querySelector('.cjs-password'),
-            passwordLabel = document.querySelector('.cjs-password-label')
+        cpasswordToggle.addEventListener('change', function() {
+            const password = document.querySelector('.cjs-password'),
+                passwordLabel = document.querySelector('.cjs-password-label')
 
-        if (password.type === 'password') {
-            password.type = 'text'
-            passwordLabel.innerHTML = 'hide'
-        } else {
-            password.type = 'password'
-            passwordLabel.innerHTML = 'show'
-        }
+            if (password.type === 'password') {
+                password.type = 'text'
+                passwordLabel.innerHTML = 'hide'
+            } else {
+                password.type = 'password'
+                passwordLabel.innerHTML = 'show'
+            }
 
-        password.focus()
-    });
-</script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+            password.focus()
+        });
+    </script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection
