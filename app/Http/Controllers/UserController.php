@@ -76,12 +76,12 @@ class UserController extends Controller
         $user = Auth::user();
 
         $data = $request->validate([
-            'username' => ['sometimes', 'unique:users,username,' . $user->id, 'min:4', 'max:15', 'regex:/^[a-zA-Z0-9.-_]+$/'],
+            'username' => ['required','sometimes', 'unique:users,username,' . $user->id, 'min:4', 'max:15', 'regex:/^[a-zA-Z0-9.-_]+$/'],
             'name' => ['max:45'],
             'gender' => ['sometimes', 'in:male,female,undefined,' . $user->id],
             'bio' => ['max:45'],
             'pob' => ['max:45'],
-            'dob' => ['sometimes', 'date', 'before:today - 12 years,' . $user->id],
+            'dob' => ['required','sometimes', 'date', 'before:today - 12 years,' . $user->id],
         ]);
 
         $data['username'] = strtolower($data['username']);
@@ -108,5 +108,9 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function changePassword(User $user, Request $request){
+
     }
 }

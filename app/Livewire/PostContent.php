@@ -36,7 +36,7 @@ class PostContent extends Component
             'content' => $this->content,
         ]);
 
-        $this->content = null;
+        $this->reset('content');
     }
     public function likeButton()
     {
@@ -45,7 +45,7 @@ class PostContent extends Component
                 'user_id' => Auth::id(),
             ]);
             $this->post->dislikes()->where('user_id', Auth::id())->delete();
-            
+
         } else {
             $this->post->likes()->where('user_id', Auth::id())->delete();
         }

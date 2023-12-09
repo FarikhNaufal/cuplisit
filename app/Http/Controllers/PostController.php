@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -24,12 +25,40 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::with(['comments' => function($comments){
-            $comments->latest();
+        $followingId = Auth::user()->following()->pluck('user_id')->toArray();
+        $followingId[] = Auth::id();
+        $posts = Post::whereIn('user_id', $followingId)
+            ->with(['comments' => function ($comments) {
+                $comments->latest();
         }])->latest()->get();
-        return view('posts.index', compact('posts'));
+
+        $recommendationUsers = User::whereNotIn('id', $followingId)
+            ->where('id', '<>', Auth::id())
+            ->limit(10)
+            ->select('id','username', 'avatar', 'bio')
+            ->get();
+
+        $followedUsers = User::whereIn('id', $followingId)->where('id', '<>', Auth::id())->select('id','username', 'avatar', 'bio')->get();
+        return view('posts.index', compact('posts', 'recommendationUsers', 'followedUsers'));
     }
 
+    public function explore(){
+        $followingId = Auth::user()->following()->pluck('user_id')->toArray();
+        $followingId[] = Auth::id();
+        $posts = Post::with(['comments' => function ($comments) {
+            $comments->latest();
+        }])
+        ->latest()
+        ->get();
+        $recommendationUsers = User::whereNotIn('id', $followingId)
+            ->where('id', '<>', Auth::id())
+            ->limit(10)
+            ->select('id','username', 'avatar', 'bio')
+            ->get();
+
+        $followedUsers = User::whereIn('id', $followingId)->where('id', '<>', Auth::id())->select('id','username', 'avatar', 'bio')->get();
+        return view('posts.explore', compact('posts', 'recommendationUsers', 'followedUsers'));
+    }
     /**
      * Show the form for creating a new resource.
      */
