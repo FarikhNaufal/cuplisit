@@ -28,10 +28,6 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
-    - name: Prepare Laravel Application
-      run: |
-        cp .env.ci .env
-        php artisan key:generate
     - name: Run tests
       run: php artisan test
     # - name: Run php artisan 
