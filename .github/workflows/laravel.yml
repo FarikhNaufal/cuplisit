@@ -28,8 +28,12 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
-    - name: Run Static Analysis
-      run: ./vendor/bin/phpstan --error-format=github
+    - name: Prepare Laravel Application
+      run: |
+        cp .env.ci .env
+        php artisan key:generate
+    - name: Run tests
+      run: php artisan test
     # - name: Run php artisan 
     #   run: php artisan serve
     # - name: Run Npm
