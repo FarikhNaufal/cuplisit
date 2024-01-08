@@ -15,16 +15,13 @@ jobs:
         php-version: ['8.1', '8.2']
 
     steps:
-    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
-      with:
-        php-version: ${{ matrix.version }}
-    - uses: actions/checkout@v3
     - name: Setup PHP
       id: setup-php
       uses: shivammatur/setup-php@v2
       with: 
         php-version: ${{ matrix.php-version }}
         tools: laravel/pint
+    - uses: actions/checkout@v3
     - name: Install Dependencies
       run: composer install 
     - name: Check PHP Syntax
@@ -34,6 +31,7 @@ jobs:
         options: --exclude=*.log
     - name: check code style
       run: pint --test
+      
     # - name: Generate key
     #   run: php artisan key:generate
     # - name: Directory Permissions
