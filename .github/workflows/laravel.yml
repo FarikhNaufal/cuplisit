@@ -28,6 +28,8 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+    - name: Run Static Analysis
+      run: ./vendor/bin/phpstan --error-format=github
     # - name: Run php artisan 
     #   run: php artisan serve
     # - name: Run Npm
