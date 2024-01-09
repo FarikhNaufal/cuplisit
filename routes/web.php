@@ -45,3 +45,17 @@ Route::resource('users', UserController::class);
 
 Route::post('/changepassword/{user}', [UserController::class, 'changePassword'])->name('changepassword');
 
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/login', function () {
+        return view('admin.auth.login');
+    });
+    Route::get('/', function () {
+        return view('admin.posts.index');
+    });
+    Route::get('/report', function () {
+        return view('admin.user.index');
+    });
+
+});
