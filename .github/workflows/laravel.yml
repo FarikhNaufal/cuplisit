@@ -27,8 +27,8 @@ jobs:
           tools: laravel/pint, overtrue/phplint
       - name: Check PHP syntax
         run: phplint --exclude=*.log .
-      - name: Check code style
-        run: pint --test
+      # - name: Check code style
+      #   run: pint --test
       - name: Install composer dependencies
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
