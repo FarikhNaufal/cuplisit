@@ -33,6 +33,10 @@ jobs:
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: install run npm
+        run: npm install
+      - name: run npm
+        run: npm run build
       - name: Run tests
         env:
           DB_HOST: 127.0.0.1
