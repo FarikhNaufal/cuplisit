@@ -3,7 +3,7 @@
 @section('content')
 <div class=" mx-auto bg-white p-8 rounded shadow">
 
-    <h1 class="text-2xl mb-6">Report User Admin</h1>
+    <h1 class="text-2xl mb-6">Report User Admin!</h1>
 
     <table class="min-w-full bg-white border border-gray-300">
         <thead class="bg-primary text-white">
