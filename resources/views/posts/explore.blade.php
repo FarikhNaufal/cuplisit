@@ -11,7 +11,7 @@
                 <hr class="bg-gray-200 h-[2px] rounded-sm w-full my-5">
                 {{-- Isi Post --}}
                 <div class="flex justify-between">
-                    <a href="{{route('users.show', $post->user->username)}}" class="flex">
+                    <a href="{{ route('users.show', $post->user->username) }}" class="flex">
                         <img src="{{ $post->user->avatar ? asset('users/' . $post->user->id . '/' . $post->user->avatar) : asset('images/user.jpg') }}"
                             alt="profile" class="w-12 h-12 aspect-square object-cover rounded-full border-primary border-2">
                         <div class="flex-col  ml-4">
@@ -36,9 +36,25 @@
                                 x-transition:enter="transition ease-out duration-300">
                                 <h2 class="text-2xl font-semibold mb-4">Setting Postingan</h2>
                                 <div class="flex gap-4">
-                                    <a href=""
-                                        class="bg-red-500 hover:bg-red-700 text-white font-light py-2 px-4 rounded">Report
-                                        this post</a>
+                                    @if ($post->user_id == auth()->id())
+                                        <form action="{{ route('posts.destroy', $post) }}" enctype="multipart/form-data"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                class="bg-red-500 hover:bg-red-700 text-white font-light py-2 px-4 rounded">Delete
+                                                this post</button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('posts.report', $post) }}" method="post"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            @method('POST')
+                                            <button
+                                                class="bg-red-500 hover:bg-red-700 text-white font-light py-2 px-4 rounded">Report
+                                                this post</button>
+                                        </form>
+                                    @endif
                                     <button @click="isOpen = false"
                                         class="bg-primary hover:bg-opacity-75 text-white font-light py-2 px-4 rounded">
                                         Cancel
@@ -77,4 +93,3 @@
         @include('templates.partials.rightContents')
     </div>
 @endsection
-

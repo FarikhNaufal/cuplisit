@@ -15,15 +15,12 @@
                         <h1 class="text-xl text-secondry">ADMIN<span class="text-primary">.IT</span></h1>
                     </div>
                     <div class="w-full hover:bg-primary rounded-md hover:text-white p-2">
-                        <a href="/admin/report" class="text-lg ">ReportPostingan</a>
-                    </div>
-                    <div class="w-full hover:bg-primary rounded-md hover:text-white p-2">
-                        <a href="/admin/" class="text-lg ">ReportUser</a>
+                        <a href="/admin/" class="text-lg ">ReportPostingan</a>
                     </div>
                 </div>
             </div>
         </div>
-        
+
 
         <div x-data="{ isOpen: false }" class="me-0 ms-auto">
             <button @click="isOpen = !isOpen"
@@ -34,8 +31,8 @@
             {{-- <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button> --}}
             <div x-cloak x-show="isOpen"
                 class="absolute w-auto right-3 bg-white rounded-lg shadow-lg py-4 px-3 mt-3 md:mt-5">
-                
-                <form action="/admin/login" enctype="multipart/form-data">
+
+                <form action="{{route('admin-logout')}}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <button class="block  account-link hover:text-primary">Logout</button>
                 </form>
