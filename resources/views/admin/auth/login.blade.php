@@ -22,7 +22,7 @@ style="font-family: 'Jockey One', sans-serif">
         @endif
         <div class="lg:w-[40rem] w-[20rem] bg-secondry rounded-xl p-8">
 
-            <form action="{{ route('login-process') }}" method="POST" class="flex flex-col" enctype="multipart/form-data">
+            <form action="{{ route('admin-login-process') }}" method="POST" class="flex flex-col" enctype="multipart/form-data">
                 @csrf
                 <p class="text-white">Login Form</p>
                 <input type="text"
@@ -49,14 +49,8 @@ style="font-family: 'Jockey One', sans-serif">
                 @if (session('loginerror'))
                     <label class="text-red-600">{{ session('loginerror') }}</label>
                 @endif
-                {{-- <div class="flex gap-1 mt-2 mb-5">
-                    <input type="checkbox" name="rememberme" id="">
-                    <span class="text-white text-xs">Remember me</span>
-                    <a href="forgotPass" class="text-white text-xs ms-auto hover:underline hover:underline-offset-2">Forgot
-                        password</a>
-                </div> --}}
                 <button class="w-full py-4 mt-2 text-white rounded-md bg-primary mb-2 hover:bg-opacity-60">LOGIN</button>
-                
+
             </form>
         </div>
     </div>

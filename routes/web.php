@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
@@ -40,6 +41,7 @@ Route::get('/reset-password/{token}', function (string $token) {
 Route::get('/', [PostController::class, 'index']);
 Route::get('/explore', [PostController::class, 'explore']);
 Route::resource('posts', PostController::class)->except('index');
+Route::post('posts/{post}/report', [PostController::class, 'report'])->name('posts.report');
 Route::resource('comments', CommentController::class);
 Route::resource('users', UserController::class);
 
@@ -50,12 +52,14 @@ Route::post('/changepassword/{user}', [UserController::class, 'changePassword'])
 Route::prefix('admin')->group(function () {
     Route::get('/login', function () {
         return view('admin.auth.login');
-    });
-    Route::get('/', function () {
-        return view('admin.posts.index');
-    });
-    Route::get('/report', function () {
-        return view('admin.user.index');
+    })->name('admin-login');
+    Route::post('Adminlogin', [AdminController::class, 'login'])->name('admin-login-process');
+
+
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/', [AdminController::class, 'report']);
+        Route::post('/deletePost/{userID}/{post}', [AdminController::class, 'deletePost'])->name('deletePost');
+        Route::post('/logout_by_admin', [AdminController::class, 'logout'])->name('admin-logout');
     });
 
 });

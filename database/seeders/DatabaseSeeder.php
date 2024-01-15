@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Date;
@@ -71,15 +72,12 @@ class DatabaseSeeder extends Seeder
             'pob' => 'Lamongan',
             'dob' => Date::create(2000, 1, 1)
         ]);
-        // 'username',
-        // 'name',
-        // 'email',
-        // 'password',
-        // 'avatar',
-        // 'bio',
-        // 'gender',
-        // 'pob',
-        // 'dob',
 
+
+        Admin::create([
+            'username' => 'ngadimin',
+            'email'=> 'ngadimin@gmail.com',
+            'password' => bcrypt('ngadimin123'),
+        ]);
     }
 }

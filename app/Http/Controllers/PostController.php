@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -149,7 +150,21 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
         $media =  public_path('users/' . $this->user->id . '/posts/' . $post['media']);
+        if (File::exists($media)) {
+            File::delete($media);
+        }
         File::delete($media);
+        $post->delete();
+
+        return redirect()->back();
+    }
+
+    public function report(Post $post){
+        $report = new Report();
+        $post->report()->save($report);
+
+        return redirect()->back()->with('success', 'Post reported successfully.');
     }
 }
